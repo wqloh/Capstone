@@ -9,7 +9,7 @@
       "color": "black"
     },
     "data": {
-      "url": "https://raw.githubusercontent.com/wqloh/wqloh.github.io/refs/heads/main/RoL%20EPI%20Asia%202014-2024.csv",
+      "url": "https://raw.githubusercontent.com/wqloh/Capstone/refs/heads/main/2014-2024%20Asia%20RoL%20EPI.csv",
       "format": {"type": "csv"}
     },
     "height": 800,
@@ -36,7 +36,7 @@
         "mark": {"type": "circle", "size": 150, "opacity": 0.6},
         "encoding": {
           "x": {
-            "field": "WJP Rule of Law Index: Overall Score",
+            "field": "RoL",
             "type": "quantitative",
             "scale": {"domain": [0.3, 0.85]},
             "title": "Rule of Law Score"
@@ -85,7 +85,7 @@
             {"field": "Country"},
             {"field": "Year"},
             {
-              "field": "WJP Rule of Law Index: Overall Score",
+              "field": "RoL",
               "type": "quantitative",
               "title": "RoL Score"
             },
@@ -102,10 +102,10 @@
             "expr": "datum.Country == 'Cambodia' ? -10 : datum.Country == 'Kyrgyz Republic' ? -15 : datum.Country == 'Nepal' ? - -15 : datum.Country == 'Uzbekistan' ? - 8 : datum.Country == 'Mongolia' ? - 5 : datum.Country == 'Philippines' ? - 5 : datum.Country == 'Singapore' ? - -10 : datum.Country == 'Vietnam' ? - 5 : datum.Country == 'Indonesia' ? - -7 : 0"
           },
           "fontSize": 10
-          },
+        },
         "encoding": {
           "x": {
-            "field": "WJP Rule of Law Index: Overall Score",
+            "field": "RoL",
             "type": "quantitative"
           },
           "y": {"field": "EPI", "type": "quantitative"},
@@ -116,7 +116,7 @@
         "transform": [
           {
             "regression": "EPI",
-            "on": "WJP Rule of Law Index: Overall Score",
+            "on": "RoL",
             "params": true
           },
           {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
@@ -131,12 +131,12 @@
       },
       {
         "transform": [
-          {"regression": "EPI", "on": "WJP Rule of Law Index: Overall Score"}
+          {"regression": "EPI", "on": "RoL"}
         ],
         "mark": "line",
         "encoding": {
           "x": {
-            "field": "WJP Rule of Law Index: Overall Score",
+            "field": "RoL",
             "type": "quantitative"
           },
           "y": {"field": "EPI", "type": "quantitative"},
