@@ -33,13 +33,27 @@
         </div>
         <figure id="correlation"></figure>
     </section>
+    <section>
+        <div class="chart-description">
+            <h3>Graph 2: Correlation between RoL and EPI in Asia and Globally</h3>
+            <p> 
+                This graph includes the best and worst performing countries globally in terms of EPI (in black) as a point of comparison.
+             </p>
+             <p>
+                Note: The 6 worst performing countries are all Asian: Viet Nam, Pakistan, Laos (no Rule of Law data available), Myanmar, India, Bangladesh. After also excluding countries that do not have Rule of Law data, the world's worst performing non-Asian countries with Rule of Law data are #8 Madagascar, #15 Guatemala, #19 Rwanda.
+             </p>
+        </div>
+        <figure id="correlation_global"></figure>
+    </section>
 
 
 
    <script>
-    let fig_1 = "rol-epi-correlation.json"
+    let fig_1 = "rol-epi-correlation.json" 
+    let fig_2 = "correlation_w_global_top_bottom.json"
 
     vegaEmbed('#correlation', fig_1)
+    vegaEmbed('#correlation_global', fig_2)
 
     </script>
 </body> 

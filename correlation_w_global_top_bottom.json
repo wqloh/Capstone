@@ -1,0 +1,133 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Rule of Law (RoL) and Environmental Performance Index (EPI) - Asia",
+      "subtitle": ["2014-2024", "Source: World Justice Project, Yale", ""],
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 10,
+      "anchor": "start",
+      "color": "black"
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/wqloh/Capstone/refs/heads/main/Asia%20and%20Global%20Top%20Bottom%203%20EPI%20RoL.csv",
+      "format": {"type": "csv"}
+    },
+    "height": 800,
+    "width": 800,
+    "transform": [
+      {"filter": "datum['EPI'] != 0"},
+      {"filter": "datum.Year == year"}
+    ],
+    "params": [
+      {
+        "name": "year",
+        "value": 2024,
+        "bind": {
+          "input": "range",
+          "min": 2014,
+          "max": 2024,
+          "step": 2,
+          "name": "Year:"
+        }
+      }
+    ],
+    "layer": [
+      {
+        "mark": {"type": "circle", "size": 150, "opacity": 0.6},
+        "encoding": {
+          "x": {
+            "field": "RoL",
+            "type": "quantitative",
+            "scale": {"domain": [0.3, 0.85]},
+            "title": "Rule of Law Score"
+          },
+          "y": {
+            "field": "EPI",
+            "type": "quantitative",
+            "scale": {"domain": [18, 90]},
+            "title": "Environmental Performance Index Score"
+          },
+          "color": {
+            "field": "Country",
+            "type": "nominal",
+            "condition": {
+            "test": "datum.Country === 'Rwanda' || datum.Country === 'Guatemala' || datum.Country === 'Madagascar' || datum.Country === 'Estonia' || datum.Country === 'Germany' || datum.Country === 'Luxembourg'",
+            "value": "black"
+          },
+            "scale": {
+              "range": [
+                "#1f77b4",
+                "#ff7f0e",
+                "#2ca02c",
+                "#d62728",
+                "#9467bd",
+                "#8c564b",
+                "#e377c2",
+                "#7f7f7f",
+                "#bcbd22",
+                "#17becf",
+                "#393b79",
+                "#5254a3",
+                "#6b6ecf",
+                "#9c9ede",
+                "#637939",
+                "#8ca252",
+                "#b5cf6b",
+                "#cedb9c",
+                "#8c6d31",
+                "#bd9e39",
+                "#e7ba52",
+                "#e7cb94",
+                "#843c39",
+                "#ad494a"
+              ]
+            },
+            "legend": {"orient": "bottom", "columns": 5},
+            "title": null
+          },
+          "tooltip": [
+            {"field": "Country"},
+            {"field": "Year"},
+            {
+              "field": "RoL",
+              "type": "quantitative",
+              "title": "RoL Score"
+            },
+            {"field": "EPI", "type": "quantitative", "title": "EPI Score"}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 10,
+          "dy": {
+            "expr": "datum.Country == 'Cambodia' ? -10 : datum.Country == 'Kyrgyz Republic' ? -15 : datum.Country == 'Nepal' ? - -15 : datum.Country == 'Uzbekistan' ? - 8 : datum.Country == 'Mongolia' ? - 5 : datum.Country == 'Philippines' ? - 5 : datum.Country == 'Singapore' ? - -7 : datum.Country == 'Vietnam' ? - 5 : datum.Country == 'Indonesia' ? - -7: datum.Country == 'Guatemala' ? - 10: datum.Country == 'Estonia' ? - 4: datum.Country == 'Luxembourg' ? - 3 : 0"
+          },
+          "fontSize": 10
+        },
+        "encoding": {
+          "x": {
+            "field": "RoL",
+            "type": "quantitative"
+          },
+          "y": {"field": "EPI", "type": "quantitative"},
+          "text": {"field": "Country"}
+        }
+      },
+      {
+        "transform": [
+          {"regression": "EPI", "on": "RoL"}
+        ],
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "RoL",
+            "type": "quantitative"
+          },
+          "y": {"field": "EPI", "type": "quantitative"}
+        }
+      }
+    ]
+  }
