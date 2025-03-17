@@ -52,12 +52,11 @@
             "test": "datum.Country === 'Rwanda' || datum.Country === 'Guatemala' || datum.Country === 'Madagascar' || datum.Country === 'Estonia' || datum.Country === 'Germany' || datum.Country === 'Luxembourg'",
             "value": "#EA7131"
           },
-          "value": "#156180",
+          "value": "#146082",
           "legend": null
         },
         "tooltip": [
           {"field": "Country"},
-          {"field": "Year"},
           {"field": "RoL", "type": "quantitative", "title": "RoLI Score"},
           {"field": "EPI", "type": "quantitative", "title": "EPI Score"}
         ]
