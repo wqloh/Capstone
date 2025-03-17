@@ -26,23 +26,18 @@
 
     <section>
         <div class="chart-description">
-            <h3>Figure 1: Correlation between RoLI and EPI in Asia and Globally</h3>
+            <h3>Figure 1: Correlation between RoLI and EPI in Asia</h3>
             <p> 
-                This graph includes the best (Estonia, Luxembourg, Germany) and worst performing (Madagascar, Guatemala, Rwanda) countries globally in terms of 2024 EPI (in orange) as a point of comparison.
-             </p>
-             <p>
-                Note: The 6 worst performing countries are all Asian: Viet Nam, Pakistan, Laos (no Rule of Law data available), Myanmar, India, Bangladesh. After also excluding countries that do not have RoLI data, the world's worst performing non-Asian countries with RoLI data are (numbers from the bottom) #8 Madagascar, #15 Guatemala, #19 Rwanda.
+                Use the slider below to toggle between years (2014-2024).
              </p>
         </div>
-        <figure id="correlation_global"></figure>
+        <figure id="correlation"></figure>
     </section>
 
-
-
    <script>
-    let fig_1 = "correlation_w_global_top_bottom.json" 
+    let fig_1 = "rol-epi-correlation.json"
 
-    vegaEmbed('#correlation_global', fig_1)
+    vegaEmbed('#correlation', fig_1)
 
     </script>
 </body> 
